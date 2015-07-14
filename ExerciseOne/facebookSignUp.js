@@ -74,8 +74,9 @@ function signUpNewMember(){
     first we've created a signUp function that gets the users
     information  and stores it in our facebookUser object
 	according to the corresponding key. First and foremost
-	uncomment line 225 so we can invoke the function and start fixing
-	it.
+	find where signUp is invoked and uncomment it. Your goal
+	is to get the prompts to show up to collect user information. 
+	If you need a hint find where hintOne is invoked and uncomment it.
 
     */
 
