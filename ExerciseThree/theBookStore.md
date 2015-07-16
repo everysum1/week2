@@ -22,7 +22,7 @@ Susan, our test user, is a college grad looking for some good reads. Let's first
 	
 	(iii) If the title isn't found, alert the user that it wasn't found.
 
-2. Create a method, deleteBook, and put it on your testUser object.
+2. Create a method, deleteBook, and put it on your testUser object (Susan).
 	
 	(i) deleteBook takes a string parameter, and checks it against the books in the user's cart.
 	
@@ -32,7 +32,7 @@ Susan, our test user, is a college grad looking for some good reads. Let's first
 	
 	(iv) Inspect the cart to make sure the book was deleted.
 
-3. Create a method, clearCart, and put it on your testUser object.
+3. Create a method, clearCart, and put it on your testUser object (Susan).
 	
 	(i) clearCart prompts the user as to whether they're SURE they want to clear their cart.
 	
@@ -40,7 +40,7 @@ Susan, our test user, is a college grad looking for some good reads. Let's first
 	
 	(iii) Inspect the cart to make sure it's empty.
 
-4. Create a method, checkOut, and put it on your testUser object.
+4. Create a method, checkOut, and put it on your testUser object (Susan).
 	
 	(i) checkOut adds up the total price of the books in the user's cart and compares it to their balance.
 	
