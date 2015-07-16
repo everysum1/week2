@@ -12,7 +12,7 @@ Susan, our test user, is a college grad looking for some good reads. Let's first
 	
 	(i) checkStore goes through our bookStore and checks each book title.
 
-	(ii) If the title matches the input string, we ask the user whether he or she wants to add it to their cart.
+	(ii) If the title matches the input string, we ask the user whether he or she wants to add it to their cart. Think about what you should do based on the user's response. 
 	``` 
 	Your prompt should look like this:
 		We found your book! [Title of Book], by [Name of Author]. It costs [price].
