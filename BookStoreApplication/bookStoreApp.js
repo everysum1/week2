@@ -44,4 +44,156 @@ function testUser(){
 var BookStore = __dontWorryAboutThis();
 var Susan = testUser();
 
-console.log(Susan);
+//console.log(Susan);
+var authorList = [];
+var listString = [];
+var categoryList = [];
+var catListString = [];
+
+Susan.checkStore = function(str) {
+	//Go through every book in the store
+	for (i = 0; i < BookStore.length; i++) {
+		//if the string the user gave us matches a title
+		if (BookStore[i].title === str) {
+			//console.log('Bookstore[i]:', BookStore[i]);
+			//let the user know you found it
+			//and if they want to add it to cart
+			var answer = confirm('We found your book: ' + BookStore[i].title + ' by ' + BookStore[i].author +  ' and it costs: $' + BookStore[i].price + '. Would you like to add it to your cart?')
+			//if they say yes
+			if (answer) {
+				//put it in their cart
+					Susan['cart'].push(BookStore[i]);
+			}
+				return (Susan.cart);
+		}
+		//else if the string matches a category
+		else if (BookStore[i].category === str) {
+			//put the book in a list of books in this category
+			categoryList.push(BookStore[i]);
+		}
+		//else if the string matches an author
+		else if (BookStore[i].author === str) {
+			//put the book in a list of books by this author
+			authorList.push(BookStore[i]);
+			//console.log(authorList.length);
+		}
+	}
+	if (categoryList.length > 0) {
+		for (i=0; i<categoryList.length; i++) {
+			catListString.push(categoryList[i].title + " by " + categoryList[i].author);
+		}
+		var categoryString = catListString.join("\n");
+		var categoryChoice = prompt("There are multiple books in this category.  Which would you like to add?\n\n" + categoryString + "\n");
+		for (var i = 0; i < categoryList.length; i++) {
+			if (categoryList[i].title = categoryChoice) {
+				//put it in the cart
+				Susan.cart.push(categoryList[i]);
+				//alert the user you put it in the cart
+				alert(categoryList[i].title + " by " + categoryList[i].author + " has been placed in your cart.");
+				break;
+			}				
+
+		}
+	}
+	//if the list of the books is GREATER than 1
+	else if (authorList.length > 1) {
+	//console.log('an if loop');
+		//go through every book in the list
+		for (i=0; i<authorList.length; i++) {
+			//take the title and author	
+			//put them in a list
+			listString.push(authorList[i].title + " by " + authorList[i].author);
+			//console.log(listStrings);
+		}
+			//join this list together
+		var authorString = listString.join("\n");
+		//prompt user of books you found
+		//ask which one they want
+		var authorChoice = prompt('There are multiple books by this author.  Which would you like?\n\n' + authorString + "\n");
+				//match this string title with the object
+		for (var i = 0; i < authorList.length; i++) {
+			if (authorList[i].title = authorChoice) {
+				//put it in the cart
+				Susan.cart.push(authorList[i]);
+				//alert the user you put it in the cart
+				alert(authorList[i].title + " by " + authorList[i].author + " has been placed in your cart.");
+				break;
+			}				
+
+		}
+	}
+				//else if the list of the books is 1, 
+	else if (authorList.length === 1) {
+		var oneAuthor = confirm('We found your book:  "' + authorList[0].title + '."  Would you like to add it to your cart?')
+		//if yes, put it in the cart
+		if (true) {
+			Susan.cart.push(authorList[0]);
+
+		}
+	}		
+};
+
+Susan.checkStore("The Code of The Woosters");
+Susan.checkStore("James Joyce");
+Susan.checkStore("PG Wodehouse");
+Susan.checkStore("classic");
+
+console.log('cart:', Susan.cart);
+
+Susan.deleteBook = function(str) {
+	for (i = 0; i < Susan.cart.length; i++) {
+		if (Susan.cart[i].title = str) {
+			var deletePrompt = confirm('Are you sure you want to delete this item?');
+			if (deletePrompt) {
+				//console.log('success');
+				Susan.cart.splice(i, 1)
+			}
+			
+		}
+	}
+};
+
+//Susan.deleteBook("The Code of The Woosters");
+
+//console.log('Updated cart: ', Susan.cart);
+
+Susan.clearCart = function() {
+	var clearVar = confirm('Are you SURE you want to clear your cart?') 
+	if (clearVar) {
+		//console.log('coming true');
+		Susan.cart = [];
+	}
+	return Susan.cart;
+};
+
+Susan.clearCart();
+
+console.log('Cleared cart:', Susan.cart);
+Susan.checkStore("Heavy Weather");
+
+var total = 0;
+
+Susan.checkOut = function() {
+//go into each object in cart
+//console.log ('started function');
+	for (var i=0; i<Susan.cart.length; i++) {
+		//console.log(Susan.cart[i].price);
+		//look up price in each object
+		//console.log((Susan.cart[i]));
+		total += Susan.cart[i].price;
+		console.log(total);
+		while (i = Susan.cart.length-1) {
+			console.log('while loop');
+			if (total <= Susan.balance) {
+			//if total is greater or equal to balance, let them checkout
+				alert("You've successfully checked out! Your total is " + "$" + total);
+				break;
+			}
+			else {alert("There was a problem with your order"); break
+			};
+		}
+	}
+}
+	//compare total to balance
+	
+Susan.checkOut();
