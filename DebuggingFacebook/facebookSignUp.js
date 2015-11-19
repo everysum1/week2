@@ -54,6 +54,7 @@ var facebookUser = {
 	confirmPassword: null,
 };
 
+
 /*
 
  The signUpNewMember function runs as soon the user gets to the site.
@@ -79,7 +80,6 @@ function signUpNewMember(){
 	If you need a hint find where hintOne is invoked and uncomment it.
 
     */
-
 	function signUp(){
 
 		for (var key in facebookUser) {
@@ -87,23 +87,24 @@ function signUpNewMember(){
 		we need to check to see if the values assigned 
 		to our keys are null 
 		*/
-		 if (facebookUser.key === null) {
-		 
+		 if (facebookUser[key] === null) {
+		
 		 /*
 		 if a value is null, ask the user to enter their
 		 information with a prompt on line 96
 		 */
 		 
 		 //console.log(hintTwo());
-		 	var userInput = prompt("What's your " + facebookUser[key] + '?');
-		 
+		 	var userInput = prompt("What's your " + key + '?');
+		 		
 		 /* 
 		 reassign the key value to the usersInput we just
 		 gathered from the user.
 		 */
 
-		 	key = userInput;
-		 //console.log(facebookUser)
+		 	facebookUser[key] = userInput;
+
+		 //console.log(userInput);
 		 
 		 /* 
 		 uncomment line 121 to see the reassignment working.
@@ -123,7 +124,7 @@ function signUpNewMember(){
 		 //console.log(hintThree())
 
 		 } else {
-		 	//console.log(hintOne())
+		 //	console.log(hintOne())
 		 }
 		}
 
@@ -143,17 +144,17 @@ function signUpNewMember(){
     function checkAllFields(){
     	facebookUser['favoriteFood'] = null;
     	/* iterate through the facebookUser object*/
-    	for (var key in facebookuser) {
+    	for (var key in facebookUser) {
     		// check to see if the assigned value is null
-    		if (facebookUser.key === null) {
+    		if (facebookUser[key] === null) {
     			
 			/* 
 			if it is null, prompt the user to fill in the field 
 			they missed and save the answer as a value in your object.
 			*/
 
-    			// console.log(hintFive());
-    		key = prompt("You missed an input field " + "what's your " + facebookUser['key'] + '?');
+    			//console.log(hintFive());
+    		facebookUser[key] = prompt("You missed an input field " + "what's your " + key + '?');
     			
     		} else {
 
@@ -182,6 +183,7 @@ function signUpNewMember(){
     	// userPrompt variable holds the explanation for the prompt
     	var userPrompt = "Check to make sure the following information is correct. " +
     	"If it is, type the word 'yes' into the textbox and press enter.\n"
+
     	
     	// iterate through the facebookUser object
     	for (var key in facebookUser) {
@@ -191,8 +193,8 @@ function signUpNewMember(){
 		 so they can see the full list of the information they
 		 entered.
 		*/
-    		userPrmpt += (facebookUser[key].toUpperCase() + ': ' + facebookUser[key] + '\n'); 
-    		console.log(hintSix());
+    		userPrompt += (key.toUpperCase() + ': ' + facebookUser[key] + '\n'); 
+    		//console.log(hintSix());
     	}
     	
     	// save the users answer in a variable
@@ -205,28 +207,28 @@ function signUpNewMember(){
     	and let them sign in.
     	*/
 
-    	if (useranswer === 'yes') {
+    	if (userAnswer === 'yes') {
     		/*
     		if yes, alert the user that they are signed in by using
     		*/
 
-    		// console.log(hintSeven())
+    		console.log(hintSeven())
 
     		var userFirstName = facebookUser.firstName;
     		var userLastName = facebookUser.lastName;
     		
-    		var signInPrompt = "Hello " + facebookUser.userFirstName + " " + facebookUser['userLastName'] + "you've been signed in!"
+    		var signInPrompt = "Hello " + facebookUser.firstName + " " + facebookUser['lastName'] + " you've been signed in!"
     		
-    		alert(signinPrompt);
+    		alert(signInPrompt);
     		//uncomment 220 once your functions all work
     		//window.location.assign('http://media.tumblr.com/tumblr_m3ppveMgu71r4lux2.gif');
     	}
 
     }
 
-    //signUp();
-    //checkAllFields();
-   //confirmInformation();
+    signUp();
+    checkAllFields();
+   confirmInformation();
 
     return facebookUser;
 }
